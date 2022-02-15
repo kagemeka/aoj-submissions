@@ -2,16 +2,16 @@
 authors = ["kagemeka <kagemeka1@gmail.com>"]
 description = ""
 license = "MIT"
-name = "atcoder-submissions"
+name = "aoj-submissions"
 packages = [
-  {include = "src"}, # {include = "pseudo", from = "src"},
+  {include = "src"},
 ]
 version = "0.1.0"
 
 [tool.poetry.dependencies]
-atcoder-api = "0.3.3"
-# filesystem-python = "0.1.0"
 PyYAML = "^"
+aiohttp = "^"
+filesystem-python = "0.2.0"
 python = ">=3.9,<3.11"
 
 [tool.poetry.dev-dependencies]
@@ -30,6 +30,7 @@ pytest-asyncio = "^"
 sphinx = "^"
 sphinxcontrib-mermaid = "^"
 types-requests = "^"
+bandit = "^1.7.2"
 
 [build-system]
 build-backend = "poetry.core.masonry.api"
