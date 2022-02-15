@@ -38,8 +38,5 @@ fn main() {
         };
         writeln!(out, "{}", c).unwrap();
     }
-        
+
 }
-
-
-

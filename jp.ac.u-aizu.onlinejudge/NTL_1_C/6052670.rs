@@ -23,11 +23,11 @@ fn main() {
     let stdin = std::io::stdin();
     let mut sc = Scanner::new(std::io::BufReader::new(stdin.lock()));
     let stdout = std::io::stdout();
-    let out = &mut std::io::BufWriter::new(stdout.lock());  
+    let out = &mut std::io::BufWriter::new(stdout.lock());
 
     let n: usize = sc.scan();
     let mut x = 1;
-    for _ in 0..n { 
+    for _ in 0..n {
         let a = sc.scan();
         x = lcm(x, a);
     }

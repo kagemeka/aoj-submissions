@@ -32,6 +32,3 @@ fn main() {
     let ans = if 0 <= x - r && x + r <= w && 0 <= y - r && y + r <= h { "Yes" } else { "No" };
     writeln!(out, "{}", ans).unwrap();
 }
-
-
-
