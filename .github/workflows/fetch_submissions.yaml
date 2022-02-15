@@ -30,4 +30,4 @@ jobs:
           python3 src
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: fetch atcoder submissions.
+          commit_message: fetch aoj submissions.
