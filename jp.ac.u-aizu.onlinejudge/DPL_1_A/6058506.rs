@@ -23,9 +23,9 @@ fn main() {
     let stdin = std::io::stdin();
     let mut sc = Scanner::new(std::io::BufReader::new(stdin.lock()));
     let stdout = std::io::stdout();
-    let out = &mut std::io::BufWriter::new(stdout.lock());  
-    
-    
+    let out = &mut std::io::BufWriter::new(stdout.lock());
+
+
     let n: usize = sc.scan();
     let m: usize = sc.scan();
     let mut d = vec![0usize; m];
@@ -51,6 +51,5 @@ fn main() {
         writeln!(out, "{}", c + 1).unwrap();
         break;
     }
-    
-}
 
+}

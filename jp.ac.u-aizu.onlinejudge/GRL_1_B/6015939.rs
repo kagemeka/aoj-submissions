@@ -25,7 +25,7 @@ fn main() {
     let stdin = std::io::stdin();
     let mut sc = Scanner::new(std::io::BufReader::new(stdin.lock()));
     let stdout = std::io::stdout();
-    let out = &mut std::io::BufWriter::new(stdout.lock());  
+    let out = &mut std::io::BufWriter::new(stdout.lock());
 
     let inf = std::i64::MAX;
     let n: usize = sc.scan();
@@ -61,7 +61,7 @@ pub struct NegativeCycleError {
 impl NegativeCycleError {
     fn new() -> Self {
         Self { msg: "Negative Cycle Found." }
-    }  
+    }
 }
 
 impl std::fmt::Display for NegativeCycleError {

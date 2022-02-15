@@ -23,7 +23,7 @@ fn main() {
     let stdin = std::io::stdin();
     let mut sc = Scanner::new(std::io::BufReader::new(stdin.lock()));
     let stdout = std::io::stdout();
-    let out = &mut std::io::BufWriter::new(stdout.lock());  
+    let out = &mut std::io::BufWriter::new(stdout.lock());
 
 
     let size_a: usize = sc.scan();
@@ -79,7 +79,7 @@ pub fn ford_fulkerson(size_a: usize, size_b: usize, g: &[(usize, usize)]) -> Vec
 /// O(E\sqrt{V})
 /// references
 /// - https://en.wikipedia.org/wiki/Maximum_cardinality_matching
-/// - https://misteer.hatenablog.com/entry/hopcroft-karp 
+/// - https://misteer.hatenablog.com/entry/hopcroft-karp
 /// - https://tjkendev.github.io/procon-library/python/max_flow/hopcroft-karp.html
 /// - https://ei1333.github.io/algorithm/bipartite-matching.html
 /// - https://www.youtube.com/watch?v=lM5eIpF0xjA
@@ -89,7 +89,7 @@ pub fn hopcroft_karp(size_a: usize, size_b: usize, g: &[(usize, usize)]) -> Vec<
         let mut que = std::collections::VecDeque::new();
         let mut level = vec![std::usize::MAX; size_b];
         for u in 0..size_b {
-            if matched[u] { continue; } 
+            if matched[u] { continue; }
             level[u] = 0;
             que.push_back(u);
         }
@@ -106,11 +106,11 @@ pub fn hopcroft_karp(size_a: usize, size_b: usize, g: &[(usize, usize)]) -> Vec<
     };
 
     fn dfs(
-        g: &[Vec<usize>], 
-        level: &[usize], 
-        it: &mut [usize], 
-        pair_a: &mut [Option<usize>], 
-        matched: &mut [bool], 
+        g: &[Vec<usize>],
+        level: &[usize],
+        it: &mut [usize],
+        pair_a: &mut [Option<usize>],
+        matched: &mut [bool],
         u: usize,
     ) -> bool {
         for (i, &v) in g[u].iter().enumerate().skip(it[u]) {
@@ -124,12 +124,12 @@ pub fn hopcroft_karp(size_a: usize, size_b: usize, g: &[(usize, usize)]) -> Vec<
         }
         false
     }
-    
+
     let mut t = vec![vec![]; size_b];
     for &(v, u) in g.iter() { t[u].push(v); } // v \in A, u \in B.
     let mut matched = vec![false; size_b];
     let mut pair_a = vec![None; size_a];
-    
+
     loop {
         let level = bfs(&t, &matched, &pair_a);
         let mut it = vec![0; size_b];
@@ -137,7 +137,7 @@ pub fn hopcroft_karp(size_a: usize, size_b: usize, g: &[(usize, usize)]) -> Vec<
         for u in 0..size_b {
             if !matched[u] { updated |= dfs(&t, &level, &mut it, &mut pair_a, &mut matched, u); }
         }
-        if !updated { break; } 
+        if !updated { break; }
     }
     pair_a
 }
@@ -149,4 +149,3 @@ pub fn hopcroft_karp(size_a: usize, size_b: usize, g: &[(usize, usize)]) -> Vec<
 /// - https://en.wikipedia.org/wiki/Maximum_cardinality_matching
 pub fn blossom() {
 }
-

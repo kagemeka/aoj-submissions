@@ -23,7 +23,7 @@ fn main() {
     let stdin = std::io::stdin();
     let mut sc = Scanner::new(std::io::BufReader::new(stdin.lock()));
     let stdout = std::io::stdout();
-    let out = &mut std::io::BufWriter::new(stdout.lock());  
+    let out = &mut std::io::BufWriter::new(stdout.lock());
 
     let n: usize = sc.scan();
     let m: usize = sc.scan();
@@ -44,7 +44,7 @@ fn main() {
         }
     }
 
-    
+
 }
 
 
@@ -65,6 +65,5 @@ pub fn dijkstra_sparse(g: &Vec<Vec<(usize, i64)>>, src: usize) -> Vec<i64> {
             hq.push((-dv, *v));
         }
     }
-    dist 
+    dist
 }
-

@@ -14,4 +14,3 @@ fn main() {
     let x: i32 = scan();
     writeln!(out, "{}", x.pow(3));
 }
-

@@ -34,6 +34,3 @@ fn main() {
     }
     writeln!(out, "{}", cnt);
 }
-
-
-

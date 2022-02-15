@@ -12,7 +12,7 @@ pub struct Scanner<'a> {
 /// ```
 // impl<R: std::io::Read> Scanner<R> {
 impl<'a> Scanner<'a> {
-        pub fn new() -> Self { 
+        pub fn new() -> Self {
         let stdin = Box::leak(Box::new(std::io::stdin()));
         Self { reader: stdin.lock() }
     }
@@ -24,7 +24,7 @@ impl<'a> Scanner<'a> {
         .take_while(|c|!c.is_whitespace())
         .collect::<String>().parse::<T>().ok().unwrap()
     }
-    
+
 }
 
 
@@ -46,6 +46,5 @@ fn main() {
     let mut a = vec![0; n];
     for i in 0..n { a[i] = sc.scan(); }
     a.sort();
-    writeln!(out, "{}", a.iter().map(|x| x.to_string()).collect::<Vec<_>>().join(" ")).unwrap();   
+    writeln!(out, "{}", a.iter().map(|x| x.to_string()).collect::<Vec<_>>().join(" ")).unwrap();
 }
-

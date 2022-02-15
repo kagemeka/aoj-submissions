@@ -28,6 +28,3 @@ fn main() {
         writeln!(out, "Hello World").unwrap();
     }
 }
-
-
-

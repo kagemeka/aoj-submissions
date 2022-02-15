@@ -23,8 +23,8 @@ fn main() {
     let stdin = std::io::stdin();
     let mut sc = Scanner::new(std::io::BufReader::new(stdin.lock()));
     let stdout = std::io::stdout();
-    let out = &mut std::io::BufWriter::new(stdout.lock());  
-    
+    let out = &mut std::io::BufWriter::new(stdout.lock());
+
     let a: i64 = sc.scan();
     let b: i64 = sc.scan();
     let (g, x, y) = extgcd(a, b);

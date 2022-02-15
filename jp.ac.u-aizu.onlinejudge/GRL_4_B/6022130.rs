@@ -23,7 +23,7 @@ fn main() {
     let stdin = std::io::stdin();
     let mut sc = Scanner::new(std::io::BufReader::new(stdin.lock()));
     let stdout = std::io::stdout();
-    let out = &mut std::io::BufWriter::new(stdout.lock());  
+    let out = &mut std::io::BufWriter::new(stdout.lock());
 
     let inf = std::i64::MAX;
     let n: usize = sc.scan();
@@ -38,8 +38,8 @@ fn main() {
     for i in res.iter() {
         writeln!(out, "{}", i).unwrap();
     }
-        
-} 
+
+}
 
 
 #[derive(Debug)]
@@ -50,7 +50,7 @@ pub struct NonDAGError {
 impl NonDAGError {
     fn new() -> Self {
         Self { msg: "Given graph is not DAG." }
-    }  
+    }
 }
 
 impl std::fmt::Display for NonDAGError {
@@ -77,7 +77,7 @@ pub fn with_dfs(g: &Vec<Vec<usize>>) -> Result<Vec<usize>, NonDAGError> {
         state[u] = 2;
         result.push(u);
         Ok(())
-    } 
+    }
     let n = g.len();
     let mut state = vec![0u8; n];
     let mut result = Vec::with_capacity(n);
@@ -115,5 +115,3 @@ pub fn kahn(g: &Vec<Vec<usize>>) -> Result<Vec<usize>, NonDAGError> {
     }
     if in_deg.iter().all(|x| *x == 0) { Ok(res) } else { Err(NonDAGError::new()) }
 }
-
-

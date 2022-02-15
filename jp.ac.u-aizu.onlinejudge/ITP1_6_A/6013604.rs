@@ -30,6 +30,3 @@ fn main() {
     a.reverse();
     writeln!(out, "{}", a.iter().map(|x| x.to_string()).collect::<Vec<_>>().join(" ")).unwrap();
 }
-
-
-

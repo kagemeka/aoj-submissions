@@ -41,8 +41,5 @@ fn main() {
         }
     }
     writeln!(out, "").unwrap();
-        
+
 }
-
-
-
