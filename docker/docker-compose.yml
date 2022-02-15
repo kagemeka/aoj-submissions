@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: kagemeka/atcoder-submissions-dev
+    image: kagemeka/$PROJECT
     restart: on-failure
     tty: true
     volumes:
