@@ -13,7 +13,7 @@ PyYAML = "^"
 aiohttp = "^"
 filesystem-python = "0.2.0"
 python = ">=3.9,<3.11"
-aoj-api = "0.2.1"
+aoj-api = "0.2.2"
 
 [tool.poetry.dev-dependencies]
 autopep8 = "^"
