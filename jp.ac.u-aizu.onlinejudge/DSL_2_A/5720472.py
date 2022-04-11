@@ -17,13 +17,13 @@ class SegmentTree():
   ) -> typing.NoReturn:
     n = 1 << height
     a = [0] * (n << 1)
-    self.__n = n 
+    self.__n = n
     self.__a = a
-  
+
 
   def __len__(self) -> int:
     return self.__n
-  
+
 
   def __repr__(self) -> str:
     return str(self.__a)
@@ -105,12 +105,12 @@ def solve(
       print(rmq.min(
         x, y + 1, 0, 1 << h, 1,
       ))
-      
+
 
 
 def main() -> typing.NoReturn:
   n, q = map(
-    int, 
+    int,
     input().split(),
   )
   q = [

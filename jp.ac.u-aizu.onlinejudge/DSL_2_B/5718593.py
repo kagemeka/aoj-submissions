@@ -17,13 +17,13 @@ class SegmentTree():
   ) -> typing.NoReturn:
     n = 1 << height
     a = [0] * (2 * n)
-    self.__n = n 
+    self.__n = n
     self.__a = a
-  
+
 
   def __len__(self) -> int:
     return self.__n
-  
+
 
   def __repr__(self) -> str:
     return str(self.__a)
@@ -39,14 +39,14 @@ class SegmentTree():
 
 
 class RSQ():
-  
+
   def __init__(
     self,
     height: int,
   ) -> typing.NoReturn:
     seg = SegmentTree(height)
     self.__seg = seg
-  
+
 
   def add(
     self,
@@ -67,7 +67,7 @@ class RSQ():
     seg = self.__seg
     n = len(seg)
     l += n; r += n
-    s = 0 
+    s = 0
     while l < r:
       if l & 1:
         s += seg[l]; l += 1
@@ -90,12 +90,12 @@ def solve(
       rsq.add(x - 1, y)
     else:
       print(rsq.sum(x - 1, y))
-      
+
 
 
 def main() -> typing.NoReturn:
   n, q = map(
-    int, 
+    int,
     input().split(),
   )
   q = [

@@ -23,7 +23,7 @@ fn main() {
     let stdin = std::io::stdin();
     let mut sc = Scanner::new(std::io::BufReader::new(stdin.lock()));
     let stdout = std::io::stdout();
-    let out = &mut std::io::BufWriter::new(stdout.lock());  
+    let out = &mut std::io::BufWriter::new(stdout.lock());
 
     let n: usize = sc.scan();
     let f = prime_factorize(n);
@@ -127,6 +127,3 @@ pub fn count_prime_factors(n: usize) -> Vec<usize> {
     }
     cnt
 }
-
-
-

@@ -23,7 +23,7 @@ fn main() {
     let stdin = std::io::stdin();
     let mut sc = Scanner::new(std::io::BufReader::new(stdin.lock()));
     let stdout = std::io::stdout();
-    let out = &mut std::io::BufWriter::new(stdout.lock());  
+    let out = &mut std::io::BufWriter::new(stdout.lock());
 
     let inf = std::i64::MAX;
     let n: usize = sc.scan();
@@ -161,7 +161,7 @@ impl<S: Copy> SegmentTree<S> {
         for i in 0..size { data[n + i] = a[i]; }
         let mut seg = Self { m, data, size };
         for i in (0..n).rev() { seg.merge(i); }
-        seg        
+        seg
     }
 
     fn merge(&mut self, i: usize) {
@@ -184,7 +184,7 @@ impl<S: Copy> SegmentTree<S> {
         while l < r {
             if l & 1 == 1 { vl = (self.m.op)(&vl, &self.data[l]); l += 1; }
             if r & 1 == 1 { r -= 1; vr = (self.m.op)(&self.data[r], &vr); }
-            l >>= 1; r >>= 1; 
+            l >>= 1; r >>= 1;
         }
         (self.m.op)(&vl, &vr)
     }
@@ -215,8 +215,8 @@ impl<S: Copy> SegmentTree<S> {
 
 
 impl<S: Copy> std::ops::Index<usize> for SegmentTree<S> {
-    type Output = S; 
-    
+    type Output = S;
+
     fn index(&self, i: usize) -> &Self::Output {
         assert!(i < self.size);
         &self.data[i + (self.data.len() >> 1)]
@@ -232,4 +232,3 @@ pub struct Monoid<S> {
     pub e: Box<dyn Fn() -> S>,
     pub commutative: bool,
 }
-

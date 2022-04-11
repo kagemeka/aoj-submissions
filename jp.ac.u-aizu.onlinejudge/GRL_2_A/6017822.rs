@@ -24,7 +24,7 @@ fn main() {
     let stdin = std::io::stdin();
     let mut sc = Scanner::new(std::io::BufReader::new(stdin.lock()));
     let stdout = std::io::stdout();
-    let out = &mut std::io::BufWriter::new(stdout.lock());  
+    let out = &mut std::io::BufWriter::new(stdout.lock());
 
     let inf = std::i64::MAX;
     let n: usize = sc.scan();
@@ -54,7 +54,7 @@ mod connected_components {
         fn dfs(u: usize, label: &mut Vec<usize>, l: usize, t: &Vec<Vec<usize>>) -> () {
             label[u] = l;
             for v in t[u].iter() {
-                if label[*v] == t.len() { dfs(*v, label, l, t); } 
+                if label[*v] == t.len() { dfs(*v, label, l, t); }
             }
         }
         for i in 0..n {
@@ -87,14 +87,13 @@ pub fn boruvka(n: usize, g: &Vec<(usize, usize, i64)>) -> Vec<(usize, usize, i64
             let v = label[*v];
             if u == v { continue; }
             if min_edge[u] == m || *w < g[min_edge[u]].2 { min_edge[u] = i; }
-            if min_edge[v] == m || *w < g[min_edge[v]].2 { min_edge[v] = i; }         
+            if min_edge[v] == m || *w < g[min_edge[v]].2 { min_edge[v] = i; }
         }
         for i in min_edge {
             if is_added[i] { continue; }
             mst.push(g[i]);
-            is_added[i] = true;  
+            is_added[i] = true;
         }
     }
     mst
 }
-

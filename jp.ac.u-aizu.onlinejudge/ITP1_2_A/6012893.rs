@@ -16,6 +16,5 @@ fn main() {
     let mut op: &str;
     op = if a < b { "<" } else if a > b { "==" } else { ">" };
     writeln!(out, "{} {} {}", a, op, b).unwrap();
-    
-}
 
+}

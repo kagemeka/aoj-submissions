@@ -1,7 +1,7 @@
 # from __future__ import (
 #   annotations,
 # )
-import typing 
+import typing
 from typing import (
   Optional,
 )
@@ -17,7 +17,7 @@ class State(enum.IntEnum):
 
 
 
-# @dataclasses.dataclass 
+# @dataclasses.dataclass
 class Node():
   # parent: Optional[Node] = None
   # left: Optional[Node] = None
@@ -34,7 +34,7 @@ class Node():
     self.left = None
     self.right = None
     self.value = value
-    self.size = 1 
+    self.size = 1
     self.mn = 1 << 50
 
 
@@ -44,17 +44,17 @@ class Node():
     p = self.parent
     pp = p.parent
     if pp and pp.left is p:
-      pp.left = self 
+      pp.left = self
     if pp and pp.right is p:
       pp.right = self
-    self.parent = pp 
+    self.parent = pp
 
     if p.left is self:
-      c = self.right 
+      c = self.right
       p.left = c
-      self.right = p 
+      self.right = p
     else:
-      c = self.left 
+      c = self.left
       p.right = c
       self.left = p
     if c: c.parent = p
@@ -62,7 +62,7 @@ class Node():
     p.parent = self
     p.update()
     self.update()
-  
+
 
   def splay(
     self,
@@ -88,7 +88,7 @@ class Node():
     p = self.parent
     if not p:
       return State.NONE
-    if p.left is self: 
+    if p.left is self:
       return State.LEFT
     return State.RIGHT
 
@@ -96,7 +96,7 @@ class Node():
   def update(
     self,
   ) -> typing.NoReturn:
-    s = 1 
+    s = 1
     m = self.value
     if self.left:
       m = min(m, self.left.mn)
@@ -118,8 +118,8 @@ class SplayArray():
     self,
     root: Optional[Node]=None,
   ) -> typing.NoReturn:
-    self.root = root 
-    ... 
+    self.root = root
+    ...
 
 
   def __get(
@@ -129,7 +129,7 @@ class SplayArray():
     u = self.root
     while 1:
       j = (
-        u.left.size if u.left 
+        u.left.size if u.left
         else 0
       )
       if i < j:
@@ -159,7 +159,7 @@ class SplayArray():
     u = self.__get(i)
     u.value = x
     u.update()
-  
+
 
   @classmethod
   def from_size(
@@ -184,14 +184,14 @@ class SplayArray():
     v = rhs.root
     if not u:
       self.root = v
-      return 
+      return
     if not v: return
     u = self.__get(u.size - 1)
     u.right = v
     v.parent = u
     u.update()
     self.root = u
-  
+
 
   def split(
     self,
@@ -223,7 +223,7 @@ class SplayArray():
     v.update()
     self.join(SplayArray(v))
     self.join(rhs)
-  
+
 
   def delete(
     self,
@@ -232,11 +232,11 @@ class SplayArray():
     u = self.__get(i)
     v = u.right
     u = u.left
-    if u: u.parent = None 
+    if u: u.parent = None
     if v: v.parent = None
     self.root = u
     self.join(SplayArray(v))
-  
+
 
 import sys
 
@@ -247,7 +247,7 @@ def main() -> typing.NoReturn:
   a = [
     Node() for _ in range(n)
   ]
-  
+
   for i in range(n):
     a[i].value = int(
       sys.stdin.readline()
@@ -263,7 +263,7 @@ def main() -> typing.NoReturn:
 
   for _ in range(q):
     x, y, z = map(
-      int, 
+      int,
       sys.stdin.readline()
       .split(),
     )

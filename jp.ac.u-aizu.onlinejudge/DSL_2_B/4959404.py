@@ -2,9 +2,9 @@ import sys
 from heapq import heappush, heappop, heapify
 from bisect import bisect_left as bi_l, bisect_right as bi_r
 from collections import deque, Counter, defaultdict
-import itertools 
-import string 
-import math 
+import itertools
+import string
+import math
 from operator import xor, or_
 from functools import lru_cache, reduce
 sys.setrecursionlimit(10**7)
@@ -36,7 +36,7 @@ class Algebra:
 
     def __str__(self): return f'{self.value}'
 
-    def __add__(self, other): 
+    def __add__(self, other):
       return self.__class__((self.value + other.value) % self.mod)
     def __sub__(self, x): return self.__class__((self.value - x.value) % self.mod)
     def __mul__(self, x): return self.__class__((self.value * x.value) % self.mod)
@@ -44,19 +44,19 @@ class Algebra:
 
     def __lt__(self, x): return self.value < x.value
     def __le__(self, x): return self.value <= x.value
-    def __eq__(self, x): return self.value == x.value 
+    def __eq__(self, x): return self.value == x.value
     def __ne__(self, x): return self.value != x.value
     def __gt__(self, x): return self.value > x.value
     def __ge__(self, x): return self.value >= x.value
-  
 
-  
+
+
   class SemiGroup:
-    pass 
+    pass
   class Monoid:
     pass
   class Group:
-    pass 
+    pass
   class SemiRing:
     pass
   class Ring:
@@ -84,8 +84,8 @@ class Algebra:
         for j in range(w):
           for k in range(l):
             c[i][j] += a[i][k]*b[k][j]
-      return c 
-    
+      return c
+
   @classmethod
   def matrix_pow(cls, a, n, mod=10**9+7):
     m = len(a)
@@ -114,7 +114,7 @@ class Algebra:
         for j in range(w):
           for k in range(l):
             c[i][j] ^= a[i][k]&b[k][j]
-      return c 
+      return c
 
   @classmethod
   def bitwise_mat_pow(cls, a, n):
@@ -124,15 +124,15 @@ class Algebra:
     return cls.bitwise_dot(res, a) if n&1 else res
 
 
-  @staticmethod 
+  @staticmethod
   def cumprod(a, mod):
     l = len(a); sql = int(np.sqrt(l)+1)
     a = np.resize(a, sql**2).reshape(sql, sql)
     for i in range(sql-1): a[:, i+1] *= a[:, i]; a[:, i+1] %= mod
     for i in range(sql-1): a[i+1] *= a[i, -1]; a[i+1] %= mod
-    return np.ravel(a)[:l]  
-  
-  @classmethod 
+    return np.ravel(a)[:l]
+
+  @classmethod
   def generate_fac_ifac(cls, n, p=MOD):
     if using_numpy:
       fac = np.arange(n+1); fac[0] = 1; fac = cls.cumprod(fac, p)
@@ -143,7 +143,7 @@ class Algebra:
       for i in range(n): fac[i+1] = fac[i]*(i+1)%p
       ifac = [None]*(n+1); ifac[n] = pow(fac[n], p-2, p)
       for i in range(n, 0, -1): ifac[i-1] = ifac[i]*i%p
-    return fac, ifac 
+    return fac, ifac
 
   class Kitamasa:
     pass
@@ -156,7 +156,7 @@ class NumberTheory:
   class PrimeNumbers: # pn
     def __init__(self, n=2*10**6):
       self.is_prime, self.prime_nums = self.find(n)
-    
+
     def __call__(self, n): return self.is_prime[n]
     def __iter__(self): return iter(self.prime_nums)
     def __getitem__(self, key): return self.prime_nums[key]
@@ -174,7 +174,7 @@ class NumberTheory:
           if not is_prime[i]: continue
           for j in range(i*2, n+1, i): is_prime[j] = 0
         prime_nums = [i for i in range(2, n+1) if is_prime[i]]
-      return is_prime, prime_nums 
+      return is_prime, prime_nums
 
     @lru_cache(maxsize=None)
     def factorize(self, n):
@@ -191,7 +191,7 @@ class NumberTheory:
       for i in range(2, n+1):
         for p, c in self.factorize(i).items(): res[p] += c
       return res
-  
+
   @classmethod
   @lru_cache(maxsize=None)
   def gcd(cls, a, b): return cls.gcd(b, a%b) if b else abs(a)
@@ -228,7 +228,7 @@ class Combinatorics:
     if r == 0: return 1
     res = cls.choose(n-1,r,mod) + cls.choose(n-1,r-1,mod)
     if mod: res %= mod
-    return res 
+    return res
 
   class CombinationsMod:
     def __init__(self, n=2*10**6, mod=MOD):
@@ -263,8 +263,8 @@ class Combinatorics:
     if i == r: return [tuple(a[:r])]
     for j in range(i, n): a[i],a[j] = a[j],a[i]; res += cls.permutations(a, r, i+1)
     return res
-  
-  @staticmethod 
+
+  @staticmethod
   def combinations(a, r):
     a = tuple(a)
     n = len(a)
@@ -282,7 +282,7 @@ class Combinatorics:
 
 
 class DP:
-  @staticmethod 
+  @staticmethod
   def LIS(a):
     res = [inf] * len(a)
     for x in a: res[bi_l(res, x)] = x
@@ -308,10 +308,10 @@ class GeometryTopology:
       def __init__(self, weight=1, capacity=1, **args):
         self.weight = weight
         self.capacity = capacity
-      
+
       def __str__(self):
         return f'weight: {self.weight}, cap: {self.capacity}'
-    
+
     class __Node:
       def __init__(self, **args):
         pass
@@ -323,8 +323,8 @@ class GeometryTopology:
 
     def add_node_info(self, v, **args): self.nodes[v] = self.__Node(**args)
 
-    def add_edge(self, u, v, update=False, **args): 
-      if not update and v in self.edges[u]: return 
+    def add_edge(self, u, v, update=False, **args):
+      if not update and v in self.edges[u]: return
       self.edges[u][v] = self.__Edge(**args)
 
     def get_size(self): return self.__N
@@ -342,13 +342,13 @@ class GeometryTopology:
           lv[v], dist[v], par[v] = lv[u]+1, dist[u]+e.weight, u
           q.append(v)
       return dist
- 
+
     def dinic(self, src, sink):
       def flow_to_sink(u, flow_in):
         if u == sink: return flow_in
         flow = 0
         for v, e in self.edges[u].items():
-          if e.capacity == 0 or self.lv[v] <= self.lv[u]: continue 
+          if e.capacity == 0 or self.lv[v] <= self.lv[u]: continue
           f = flow_to_sink(v, min(flow_in, e.capacity))
           if not f: continue
           self.edges[u][v].capacity -= f
@@ -363,7 +363,7 @@ class GeometryTopology:
         self.bfs(src)
         if self.lv[sink] is None: return flow
         flow += flow_to_sink(src, inf)
-      
+
     def ford_fulkerson(self):
       pass
 
@@ -381,7 +381,7 @@ class GeometryTopology:
           for v in range(n):
             d[u][v] = min(d[u][v], d[u][w]+d[w][v])
       return d
-    
+
     def dijkstra(self, src, paths_cnt=False, mod=None):
       dist = [inf] * self.__N; dist[src] = 0
       visited = [False] * self.__N
@@ -397,10 +397,10 @@ class GeometryTopology:
           elif dv == dist[v]:
             paths[v] += paths[u]
             if mod: paths[v] %= mod
-            continue 
+            continue
           paths[v], dist[v] = paths[u], dv
           heappush(q, (dv, v))
-      if paths_cnt: return dist, paths 
+      if paths_cnt: return dist, paths
       else: return dist
 
     def astar(self, src, tgt, heuristic_func):
@@ -409,26 +409,26 @@ class GeometryTopology:
       while q:
         _, c, u = heappop(q)
         if u == tgt: return c
-        if cost[u] != inf: continue 
+        if cost[u] != inf: continue
         cost[u] = c
         for v, e in self.edges[u].items():
           if cost[v] != inf: continue
           h = heuristic_func(v, tgt)
           nc = c + e.weight
-          heappush(q, (h+nc, nc, v))        
+          heappush(q, (h+nc, nc, v))
       return inf
-    
+
     def bellman_ford(self, src):
       n = self.__N
       d = [inf] * n; d[src] = 0
-      for _ in range(n-1): 
+      for _ in range(n-1):
         for u in range(n):
           for v, e in self.edges[u].items(): d[v] = min(d[v], d[u]+e.weight)
       for u in range(n):
         for v, e in self.edges[u].items():
           if d[u]+e.weight < d[v]: raise Exception('found negative cycle.')
-      return d 
-    
+      return d
+
     def bfs01(self, src=0):
       d = [inf]*self.__N; d[src] = 0
       q = deque([src])
@@ -436,11 +436,11 @@ class GeometryTopology:
         u = q.popleft()
         for v, e in self.edges[u].items():
           dv = d[u] + e.weight
-          if d[v] <= dv: continue 
+          if d[v] <= dv: continue
           d[v] = dv
           if e.weight: q.append(v)
           else: q.appendleft(v)
-      return d 
+      return d
 
 
     def find_ancestors(self): # tree doubling.
@@ -452,13 +452,13 @@ class GeometryTopology:
     def find_dist(self, u, v):
       return self.dist[u]+self.dist[v]-2*self.dist[self.__find_lca(u, v)]
 
-    
+
     def __find_lca(self, u, v):
       du, dv = self.depth[u], self.depth[v]
       if du > dv:
-        u, v = v, u 
-        du, dv = dv, du 
-      
+        u, v = v, u
+        du, dv = dv, du
+
       d = dv - du
       for i in range(d.bit_length()): # up-stream
         if d>>i&1: v = self.__ancestors[i][v]
@@ -466,16 +466,16 @@ class GeometryTopology:
 
       for i in range(du.bit_length()-1, -1, -1): # find direct child of LCA.
         nu, nv = self.__ancestors[i][u], self.__ancestors[i][v]
-        if nu == nv: continue 
-        u, v = nu, nv 
-      
+        if nu == nv: continue
+        u, v = nu, nv
+
       return self.__ancestors[0][u]
 
     def init_dsu(self): # disjoint set union (union-find)
       n = self.__N
       self.parent = list(range(n))
-      self.rank = [0] * n 
-      self.size = [1] * n 
+      self.rank = [0] * n
+      self.size = [1] * n
 
     def find(self, u):
       if self.parent[u] == u: return u
@@ -484,12 +484,12 @@ class GeometryTopology:
 
     def unite(self, u, v):
       u, v = self.find(u), self.find(v)
-      if u == v: return 
+      if u == v: return
       if self.rank[u] < self.rank[v]: u,v = v,u
-      self.parent[v] = u 
+      self.parent[v] = u
       self.size[u] += self.size[v]
       self.rank[u] = max(self.rank[u], self.rank[v]+1)
-    
+
     def same(self, u, v): return self.find(u)==self.find(v)
 
     def groups(self, empty=True):
@@ -505,16 +505,16 @@ class GeometryTopology:
       gg = self.__class__(n)
       for u in range(n):
         for v in self.edges[u]: gg.add_edge(v, u)
-      
+
       def dfs(u):
         if visited[u]: return
-        visited[u] = True 
+        visited[u] = True
         for v in self.edges[u]: dfs(v)
         q.append(u)
 
       def rev_dfs(u, r):
-        if root[u] is not None: return 
-        root[u] = r 
+        if root[u] is not None: return
+        root[u] = r
         for v in gg.edges[u]: rev_dfs(v, r)
 
       for u in range(n): dfs(u)
@@ -523,45 +523,45 @@ class GeometryTopology:
 
 
     def kruskal(self): # minimum spanning tree
-      n = self.__N 
+      n = self.__N
       uf = self.__class__(n); uf.init_dsu()
       edges = sorted([(u,v,e.weight) for u in range(n) for v,e in self.edges[u].items()], key=lambda x: x[2])
       g = self.__class__(n)
       d = 0
       for u, v, w in edges:
-        if uf.same(u,v): continue 
+        if uf.same(u,v): continue
         uf.unite(u, v); g.add_edge(u, v, weight=w); d += w
       return g, d
-    
-    def prim(self, src=0, return_parent=False): # minimum spanning tree 
+
+    def prim(self, src=0, return_parent=False): # minimum spanning tree
       n = self.__N
       g = self.__class__(n)
       parent, visited, dist = [None]*n, [False]*n, 0
       q = [(0, (src, src))]
       while q:
         d, (w, u) = heappop(q)
-        if visited[u]: continue 
-        visited[u], parent[u] = True, w; dist += d; g.add_edge(w,u, weight=d)  
+        if visited[u]: continue
+        visited[u], parent[u] = True, w; dist += d; g.add_edge(w,u, weight=d)
         for v, e in self.edges[u].items():
           if not visited[v]: heappush(q, (e.weight, (u,v)))
       if return_parent: return g, dist, parent
       return g, dist
 
-    def boruvka(self): # minimum spanning tree 
-      n = self.__N 
+    def boruvka(self): # minimum spanning tree
+      n = self.__N
       uf = self.__class__(n); uf.init_dsu()
       g = self.__class__(n)
       d = 0
 
       def dfs(u):
-        if visited[u]: return (inf, (None, None)) 
+        if visited[u]: return (inf, (None, None))
         visited[u] = True
         cand = []
         for v, e in self.edges[u].items():
-          if uf.same(u,v): cand.append(dfs(v)); continue 
+          if uf.same(u,v): cand.append(dfs(v)); continue
           cand.append((e.weight, (u,v)))
         return sorted(cand)[0]
-      
+
       while len(set(uf.parent))!=1:
         edges, visited = [], [False]*n
         for u in range(n):
@@ -569,17 +569,17 @@ class GeometryTopology:
           edges.append(dfs(u))
         for w, (u, v) in edges:
           if uf.same(u,v): continue
-          g.add_edge(u,v, weight=w); uf.unite(u,v); d += w  
+          g.add_edge(u,v, weight=w); uf.unite(u,v); d += w
         for u in range(n): uf.find(u)
 
       return g, d
-    
+
     def tsp(self): # traveling salesperson problem
       pass
 
   class FenwickTree: # BIT (Binary Indexed Tree)
     def __init__(self, n):
-      self.__N = n 
+      self.__N = n
       self.data = [0]*(n+1)
 
     def add(self, i, x):
@@ -591,12 +591,12 @@ class GeometryTopology:
       return s
 
     def sum(self, l, r): return self.__sum(r) - self.__sum(l-1)
-    
+
   @staticmethod
   def triangle_area(p0, p1, p2, signed=False):
     x1, y1, x2, y2 = p1[0]-p0[0], p1[1]-p0[1], p2[0]-p0[0], p2[1]-p0[1]
-    return (x1*y2 - x2*y1)/2 if signed else abs(x1*y2 - x2*y1)/2 
-  
+    return (x1*y2 - x2*y1)/2 if signed else abs(x1*y2 - x2*y1)/2
+
   @classmethod
   def intersect(cls, seg1, seg2):
     (p1, p2), (p3, p4) = seg1, seg2
@@ -605,36 +605,36 @@ class GeometryTopology:
     t3 = cls.triangle_area(p3, p4, p1, signed=True)
     t4 = cls.triangle_area(p3, p4, p2, signed=True)
     return (t1*t2<0) & (t3*t4<0)
-  
+
 
 def cumxor(a): return reduce(xor, a, 0)
 def cumor(a): return reduce(or_, a, 0)
 
 def bit_count(n):
   cnt = 0
-  while n: cnt += n&1; n >>= 1 
+  while n: cnt += n&1; n >>= 1
   return cnt
 
 
 
 class AOJ:
-  @staticmethod 
+  @staticmethod
   def ALDS1_12_A():
     n, *a = map(int, sys.stdin.read().split())
     g = GeometryTopology.Graph(n)
     for i in range(n-1):
       for j in range(i+1, n):
-        if a[i*n+j] == -1: continue 
+        if a[i*n+j] == -1: continue
         g.add_edge(i,j, weight=a[i*n+j])
         g.add_edge(j,i, weight=a[i*n+j])
     _, d = g.kruskal()
     # _, d = g.prim()
     # _, d = g.boruvka()
     print(d)
-  
 
-  @staticmethod 
-  def GRL_3_C(): # strongly connected components 
+
+  @staticmethod
+  def GRL_3_C(): # strongly connected components
     n, m = map(int, sys.stdin.readline().split())
     g = GeometryTopology.Graph(n)
     for _ in range(m): g.add_edge(*map(int, sys.stdin.readline().split()))
@@ -642,8 +642,8 @@ class AOJ:
     q, *uv = map(int, sys.stdin.read().split())
     for u, v in zip(*[iter(uv)] * 2): print(int(r[u]==r[v]))
 
-  
-  @staticmethod 
+
+  @staticmethod
   def DSL_2_B():
     n, q, *txy = map(int, sys.stdin.read().split())
     bit = GeometryTopology.FenwickTree(n)
@@ -654,7 +654,7 @@ class AOJ:
 
 class YosupoJudge:
 
-  @staticmethod 
+  @staticmethod
   def PointAddRangeSum():
     n, q = map(int, sys.stdin.readline().split())
     a = [int(x) for x in sys.stdin.readline().split()]
@@ -663,8 +663,8 @@ class YosupoJudge:
     for t, i, j in zip(*[map(int, sys.stdin.read().split())]*3):
       if t==0: bit.add(i+1,j)
       else: print(bit.sum(i+1,j))
-    
-  @staticmethod 
+
+  @staticmethod
   def Directed_MST():
     n, m, s, *abc = map(int, sys.stdin.read().split())
     g = GeometryTopology.Graph(n)
@@ -673,7 +673,7 @@ class YosupoJudge:
     print(d)
     print(*p)
 
-  @staticmethod 
+  @staticmethod
   def Manhattan_MST():
       n, *xy = map(int, sys.stdin.read().split())
       g = GeometryTopology.Graph(n)
@@ -686,4 +686,4 @@ if __name__ == '__main__':
   # print(12 & -12)
   # print(bin(-12))
   # AtCoder.ARC107.e()
-  pass 
+  pass

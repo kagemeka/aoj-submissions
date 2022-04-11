@@ -27,6 +27,3 @@ fn main() {
     let r: f64 = sc.scan();
     writeln!(out, "{:.16} {:.16}", r * r * std::f64::consts::PI, r * r * std::f64::consts::PI).unwrap();
 }
-
-
-

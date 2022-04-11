@@ -17,6 +17,5 @@ fn main() {
     let h = m / 60;
     m %= 60;
     writeln!(out, "{}:{}:{}", h, m, s).unwrap();
-    
-}
 
+}

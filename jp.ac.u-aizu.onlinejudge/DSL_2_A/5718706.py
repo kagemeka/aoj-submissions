@@ -17,13 +17,13 @@ class SegmentTree():
   ) -> typing.NoReturn:
     n = 1 << height
     a = [0] * (n << 1)
-    self.__n = n 
+    self.__n = n
     self.__a = a
-  
+
 
   def __len__(self) -> int:
     return self.__n
-  
+
 
   def __repr__(self) -> str:
     return str(self.__a)
@@ -50,7 +50,7 @@ class RMQ():
       seg[i] = inf
     self.__inf = inf
     self.__seg = seg
-  
+
 
   def __setitem__(
     self,
@@ -84,7 +84,7 @@ class RMQ():
         l += 1
       l >>= 1
       if r & 1:
-        r -= 1; 
+        r -= 1;
         mn = min(mn, seg[r])
       r >>= 1
     return mn
@@ -103,12 +103,12 @@ def solve(
       rmq[x - 1] = y
     else:
       print(rmq.min(x - 1, y))
-      
+
 
 
 def main() -> typing.NoReturn:
   n, q = map(
-    int, 
+    int,
     input().split(),
   )
   q = [

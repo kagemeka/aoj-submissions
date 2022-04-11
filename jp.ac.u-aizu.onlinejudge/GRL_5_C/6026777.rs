@@ -23,7 +23,7 @@ fn main() {
     let stdin = std::io::stdin();
     let mut sc = Scanner::new(std::io::BufReader::new(stdin.lock()));
     let stdout = std::io::stdout();
-    let out = &mut std::io::BufWriter::new(stdout.lock());  
+    let out = &mut std::io::BufWriter::new(stdout.lock());
 
     // let inf = std::i64::MAX;
     let n: usize = sc.scan();
@@ -79,10 +79,10 @@ pub fn bit_length(n: usize) -> usize {
 
 /// Lowest Common Ancestor with Binary Lifting.
 /// references
-/// - https://cp-algorithms.com/graph/lca_binary_lifting.html 
+/// - https://cp-algorithms.com/graph/lca_binary_lifting.html
 pub struct BinaryLifting {
     ancestor: Vec<Vec<usize>>,
-    depth: Vec<usize>,    
+    depth: Vec<usize>,
 }
 
 
@@ -96,7 +96,7 @@ impl BinaryLifting {
         ancestor[0] = parent;
         ancestor[0][root] = root;
         for i in 0..k - 1 {
-            for j in 0..n { 
+            for j in 0..n {
                 ancestor[i + 1][j] = ancestor[i][ancestor[i][j]];
             }
         }
@@ -119,4 +119,3 @@ impl BinaryLifting {
         self.ancestor[0][u]
     }
 }
-

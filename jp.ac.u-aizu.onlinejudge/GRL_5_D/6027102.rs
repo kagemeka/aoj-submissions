@@ -23,15 +23,15 @@ fn main() {
     let stdin = std::io::stdin();
     let mut sc = Scanner::new(std::io::BufReader::new(stdin.lock()));
     let stdout = std::io::stdout();
-    let out = &mut std::io::BufWriter::new(stdout.lock());  
+    let out = &mut std::io::BufWriter::new(stdout.lock());
 
 
     // keywords
-    // - euler_tour 
+    // - euler_tour
     // - range add, point get
     //     - fenwick tree
     //     - segment tree dual
-    //     - ... 
+    //     - ...
     // references
     // - https://perogram.hateblo.jp/entry/2020/10/01/034136
 
@@ -58,7 +58,7 @@ fn main() {
         if t == 0 {
             let u: usize = sc.scan();
             let w: i64 = sc.scan();
-            fw.set(first[u], &w); 
+            fw.set(first[u], &w);
             fw.set(last[u] + 1, &-w);
         } else {
             let u: usize = sc.scan();
@@ -105,9 +105,9 @@ pub fn euler_tour_node(g: &Vec<(usize, usize)>, root: usize) -> (Vec<isize>, Vec
     let mut last_idx = vec![n; n];
     for i in 0..tour.len() {
         let mut u = tour[i];
-        if u < 0 { 
+        if u < 0 {
             u = parent[!u as usize] as isize;
-            tour[i] = u; 
+            tour[i] = u;
         } else {
             first_idx[u as usize] = i;
         }
@@ -222,4 +222,3 @@ pub struct Monoid<S> {
     pub e: Box<dyn Fn() -> S>,
     pub commutative: bool,
 }
-

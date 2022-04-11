@@ -31,6 +31,3 @@ fn main() {
     let f = a as f64 / b as f64;
     writeln!(out, "{} {} {:.20}", d, r, f).unwrap();
 }
-
-
-

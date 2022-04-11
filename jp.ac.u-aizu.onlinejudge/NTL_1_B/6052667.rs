@@ -23,7 +23,7 @@ fn main() {
     let stdin = std::io::stdin();
     let mut sc = Scanner::new(std::io::BufReader::new(stdin.lock()));
     let stdout = std::io::stdout();
-    let out = &mut std::io::BufWriter::new(stdout.lock());  
+    let out = &mut std::io::BufWriter::new(stdout.lock());
 
     type Mint = Modular<1_000_000_007>;
     let m: usize = sc.scan();
@@ -115,7 +115,7 @@ impl<const MOD: usize> std::ops::Div for Modular<MOD> {
 
 impl<const MOD: usize> std::ops::DivAssign for Modular<MOD> {
     fn div_assign(&mut self, rhs: Self) { *self = *self / rhs; }
-} 
+}
 
 
 
@@ -142,16 +142,16 @@ mod tests {
         let mut a = Mint::new(1);
         let b = Mint::new(1_000_000_007);
         a += b;
-        assert_eq!(a, Mint::new(1));   
+        assert_eq!(a, Mint::new(1));
         assert_eq!(b, Mint::new(0));
     }
-    
+
     #[test]
     fn test_neg() {
         let a = Mint::new(1);
         assert_eq!(-a, Mint::new(1_000_000_006));
     }
-    
+
     #[test]
     fn test_sub() {
         let a = Mint::new(1);
@@ -182,7 +182,7 @@ mod tests {
         a *= b;
         assert_eq!(a, Mint::new(1_000_000_005));
         assert_eq!(b, Mint::new(1_000_000_006));
-    }    
+    }
 
     #[test]
     fn test_inverse() {
@@ -191,4 +191,3 @@ mod tests {
     }
 
 }
-

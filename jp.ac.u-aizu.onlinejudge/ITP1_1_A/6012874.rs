@@ -13,4 +13,3 @@ fn main() {
     let out = &mut std::io::BufWriter::new(std::io::stdout());
     writeln!(out, "Hello World");
 }
-

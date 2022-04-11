@@ -1,7 +1,7 @@
 from __future__ import (
   annotations,
 )
-import typing 
+import typing
 from typing import (
   Optional,
 )
@@ -10,7 +10,7 @@ import dataclasses
 
 T = typing.TypeVar('T')
 V = typing.TypeVar('V')
-@dataclasses.dataclass 
+@dataclasses.dataclass
 class Node(
   typing.Generic[T, V],
 ):
@@ -21,7 +21,7 @@ class Node(
 
 
 
-@dataclasses.dataclass 
+@dataclasses.dataclass
 class SplayTree():
   root: Optional[Node] = None
 
@@ -32,12 +32,12 @@ class SplayTree():
     if self.__key < u.key:
       v = u.left
       u.left = v.right
-      v.right = u  
+      v.right = u
     else:
-      v = u.right 
+      v = u.right
       u.right = v.left
-      v.left = u 
-    self.root = v 
+      v.left = u
+    self.root = v
 
 
   def splay(
@@ -123,9 +123,9 @@ def main() -> typing.NoReturn:
   ]
   for i in range(n - 1):
     a[i].right = a[i + 1]
-  
+
   st = SplayTree(a[0])
-  
+
   n = int(input())
   i = 0
   for _ in range(n):

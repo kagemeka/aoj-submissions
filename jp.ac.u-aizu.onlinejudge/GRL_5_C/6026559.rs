@@ -23,7 +23,7 @@ fn main() {
     let stdin = std::io::stdin();
     let mut sc = Scanner::new(std::io::BufReader::new(stdin.lock()));
     let stdout = std::io::stdout();
-    let out = &mut std::io::BufWriter::new(stdout.lock());  
+    let out = &mut std::io::BufWriter::new(stdout.lock());
 
     // let inf = std::i64::MAX;
     let n: usize = sc.scan();
@@ -58,7 +58,7 @@ impl UnionFind {
     pub fn new(n: usize) -> Self {
         Self { data: vec![-1; n] }
     }
-    
+
     pub fn find(&mut self, u: usize) -> usize {
         if self.data[u] < 0 { return u; }
         self.data[u] = self.find(self.data[u] as usize) as i32;
@@ -83,23 +83,23 @@ impl UnionFind {
 /// Lowest Common Ancestor with Tarjan's offline algorithm.
 /// O(V + Q) preprocessing, O(1) per query.
 /// references
-/// - https://cp-algorithms.com/graph/lca_tarjan.html 
+/// - https://cp-algorithms.com/graph/lca_tarjan.html
 /// - https://en.wikipedia.org/wiki/Tarjan%27s_off-line_lowest_common_ancestors_algorithm
 /// - https://tjkendev.github.io/procon-library/python/graph/lca-tarjan.html
 pub fn tarjan_offline(g: &Vec<(usize, usize)>, uv: &Vec<(usize, usize)>, root: usize) -> Vec<usize> {
     fn dfs(
-        g: &Vec<Vec<usize>>, 
-        q: &Vec<Vec<(usize, usize)>>, 
-        visited: &mut Vec<bool>, 
-        uf: &mut UnionFind, 
-        ancestor: &mut Vec<usize>, 
+        g: &Vec<Vec<usize>>,
+        q: &Vec<Vec<(usize, usize)>>,
+        visited: &mut Vec<bool>,
+        uf: &mut UnionFind,
+        ancestor: &mut Vec<usize>,
         lca: &mut Vec<usize>,
         u: usize,
     ) {
         visited[u] = true;
         ancestor[u] = u;
         for &v in g[u].iter() {
-            if visited[v] { continue; }            
+            if visited[v] { continue; }
             dfs(g, q, visited, uf, ancestor, lca, v);
             uf.unite(u, v);
             ancestor[uf.find(u)] = u;
@@ -126,4 +126,3 @@ pub fn tarjan_offline(g: &Vec<(usize, usize)>, uv: &Vec<(usize, usize)>, root: u
     dfs(&t, &q, &mut visited, &mut uf, &mut ancestor, &mut lca, root);
     lca
 }
-

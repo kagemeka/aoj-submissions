@@ -1,4 +1,4 @@
-import typing 
+import typing
 import sys
 sys.setrecursionlimit(1 << 20)
 # import dataclasses
@@ -11,9 +11,9 @@ F = typing.TypeVar('F')
 class Monoid(typing.Generic[S]):
     op: typing.Callable[[S, S], S]
     e: typing.Callable[[], S]
-    
+
     def __init__(self, op, e) -> None:
-        self.op = op 
+        self.op = op
         self.e = e
 
 
@@ -30,7 +30,7 @@ def rerooting(
     for u, v, f in edges:
         graph[u].append((v, f))
         graph[v].append((u, f))
-        
+
     dp_from_childs = [monoid.e() for _ in range(n)]
 
     def tree_dp(u: int, parent: int) -> None:
@@ -45,12 +45,12 @@ def rerooting(
 
     tree_dp(0, -1)
     dp_from_parent = [monoid.e() for _ in range(n)]
-    
+
     def reroot(u: int, parent: int) -> None:
         child_edges = [edge for edge in graph[u] if edge[0] != parent]
         deg = len(child_edges)
-        dp_l = [monoid.e() for _ in range(deg)] 
-        dp_r = [monoid.e() for _ in range(deg)] 
+        dp_l = [monoid.e() for _ in range(deg)]
+        dp_r = [monoid.e() for _ in range(deg)]
         for i, (v, f) in enumerate(child_edges[:-1]):
             dp_l[i + 1] = monoid.op(dp_l[i], map_(f, dp_from_childs[v]))
         for i, (v, f) in reversed(list(enumerate(child_edges[1:]))):
@@ -61,10 +61,10 @@ def rerooting(
                 monoid.op(dp_from_parent[u], monoid.op(dp_l[i], dp_r[i])),
             )
             reroot(v, u)
-        
+
     reroot(0, -1)
     return [monoid.op(dp_from_childs[i], dp_from_parent[i]) for i in range(n)]
-            
+
 
 
 def main() -> None:
@@ -76,7 +76,7 @@ def main() -> None:
             e=lambda: 0,
         ),
         map_=lambda f, x: x + f,
-        edges=edges,      
+        edges=edges,
     )
     print(*dp, sep='\n')
 

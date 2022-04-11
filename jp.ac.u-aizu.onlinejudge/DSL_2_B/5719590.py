@@ -9,7 +9,7 @@ class FenwickTree():
     n: int,
   ) -> typing.NoReturn:
     self.__buf = [0] * n
-  
+
 
   # def add(
   #   self,
@@ -27,7 +27,7 @@ class FenwickTree():
   #   self,
   #   i: int,
   # ) -> int:
-  #   s = 0 
+  #   s = 0
   #   while i >= 0:
   #     s += self.__buf[i]
   #     i &= i + 1
@@ -52,7 +52,7 @@ class FenwickTree():
     self,
     i: int,
   ) -> int:
-    s = 0 
+    s = 0
     while i >= 0:
       s += self.__buf[i]
       i &= i + 1
@@ -83,7 +83,7 @@ def solve(
 
 def main() -> typing.NoReturn:
   n, q = map(
-    int, 
+    int,
     input().split(),
   )
   q = [

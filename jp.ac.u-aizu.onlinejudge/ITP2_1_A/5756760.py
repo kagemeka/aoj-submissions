@@ -1,7 +1,7 @@
 # from __future__ import (
 #   annotations,
 # )
-import typing 
+import typing
 from typing import (
   Optional,
 )
@@ -17,7 +17,7 @@ class State(enum.IntEnum):
 
 
 
-# @dataclasses.dataclass 
+# @dataclasses.dataclass
 class Node():
   # parent: Optional[Node] = None
   # left: Optional[Node] = None
@@ -28,7 +28,7 @@ class Node():
   def __init__(
     self,
   ) -> typing.NoReturn:
-    self.parent = None 
+    self.parent = None
     self.left = None
     self.right = None
     self.value = None
@@ -42,17 +42,17 @@ class Node():
     pp = p.parent
 
     if pp and pp.left is p:
-      pp.left = self 
+      pp.left = self
     if pp and pp.right is p:
       pp.right = self
-    self.parent = pp 
+    self.parent = pp
 
     if p.left is self:
-      c = self.right 
+      c = self.right
       p.left = c
-      self.right = p 
+      self.right = p
     else:
-      c = self.left 
+      c = self.left
       p.right = c
       self.left = p
     if c: c.parent = p
@@ -60,7 +60,7 @@ class Node():
 
     p.update()
     self.update()
-  
+
 
   def splay(
     self,
@@ -86,7 +86,7 @@ class Node():
     p = self.parent
     if not p:
       return State.NONE
-    if p.left is self: 
+    if p.left is self:
       return State.LEFT
     return State.RIGHT
 
@@ -94,7 +94,7 @@ class Node():
   def update(
     self,
   ) -> typing.NoReturn:
-    s = 1 
+    s = 1
     if self.left is not None:
       s += self.left.size
     if self.right is not None:
@@ -122,7 +122,7 @@ class SplayArray():
     u = self.root
     while 1:
       j = (
-        u.left.size if u.left 
+        u.left.size if u.left
         else 0
       )
       if i < j:
@@ -151,7 +151,7 @@ class SplayArray():
   ) -> typing.NoReturn:
     u = self.__get(i)
     u.value = x
-  
+
 
   @classmethod
   def from_size(
@@ -173,7 +173,7 @@ def main() -> typing.NoReturn:
   n = 1 << 18
   st = SplayArray.from_size(n)
   n = int(input())
-  i = 0 
+  i = 0
   for _ in range(n):
     *q, = map(
       int, input().split(),
