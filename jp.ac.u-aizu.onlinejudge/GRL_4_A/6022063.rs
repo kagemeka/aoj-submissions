@@ -24,7 +24,7 @@ fn main() {
     let stdin = std::io::stdin();
     let mut sc = Scanner::new(std::io::BufReader::new(stdin.lock()));
     let stdout = std::io::stdout();
-    let out = &mut std::io::BufWriter::new(stdout.lock());  
+    let out = &mut std::io::BufWriter::new(stdout.lock());
 
     let inf = std::i64::MAX;
     let n: usize = sc.scan();
@@ -41,7 +41,7 @@ fn main() {
         writeln!(out, "{}", 1).unwrap();
     }
 
-} 
+}
 
 
 
@@ -54,7 +54,7 @@ pub struct NonDAGError {
 impl NonDAGError {
     fn new() -> Self {
         Self { msg: "Given graph is not DAG." }
-    }  
+    }
 }
 
 impl std::fmt::Display for NonDAGError {
@@ -88,4 +88,3 @@ pub fn kahn(g: &Vec<Vec<usize>>) -> Result<Vec<usize>, NonDAGError> {
     }
     if in_deg.iter().all(|x| *x == 0) { Ok(res) } else { Err(NonDAGError::new()) }
 }
-

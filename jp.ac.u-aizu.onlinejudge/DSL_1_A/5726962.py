@@ -1,4 +1,4 @@
-import typing 
+import typing
 import dataclasses
 
 
@@ -11,7 +11,7 @@ class UFNode():
   rank: int = 0
 
 
-class UnionFind():  
+class UnionFind():
 
   def __init__(
     self,
@@ -21,7 +21,7 @@ class UnionFind():
       UFNode(i)
       for i in range(n)
     ]
-  
+
 
   def find(
     self,
@@ -49,7 +49,7 @@ class UnionFind():
     a[u].size += a[v].size
     a[v].parent = u
 
-  
+
   def same(
     self,
     u: int,
@@ -58,8 +58,8 @@ class UnionFind():
     u = self.find(u)
     v = self.find(v)
     return u == v
-  
-  
+
+
 
 import sys
 
@@ -69,7 +69,7 @@ def main() -> typing.NoReturn:
   )
   uf = UnionFind(n)
   a = map(
-    int, 
+    int,
     sys.stdin.read().split(),
   )
   a = zip(*[a] * 3)

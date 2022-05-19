@@ -1,4 +1,4 @@
-import typing 
+import typing
 
 
 def articulation_points_lowlink(
@@ -33,7 +33,7 @@ def articulation_points_lowlink(
             lowlink[u] = min(lowlink[u], lowlink[v])
             is_articulation[u] |= edge_id_to_u != -1 and lowlink[v] >= order[u]
         is_articulation[u] |= edge_id_to_u == -1 and num_childs >= 2
-    
+
     for i in range(n):
         if order[i] == -1:
             dfs(i, -1)
@@ -44,7 +44,7 @@ def articulation_points_lowlink(
 def main() -> None:
     n, m = map(int, input().split())
     edges = [tuple(map(int, input().split())) for _ in range(m)]
-    
+
     points = articulation_points_lowlink(n, edges)
     print(*points, sep='\n')
 

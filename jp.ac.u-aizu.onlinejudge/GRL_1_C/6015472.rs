@@ -23,7 +23,7 @@ fn main() {
     let stdin = std::io::stdin();
     let mut sc = Scanner::new(std::io::BufReader::new(stdin.lock()));
     let stdout = std::io::stdout();
-    let out = &mut std::io::BufWriter::new(stdout.lock());  
+    let out = &mut std::io::BufWriter::new(stdout.lock());
 
     let n: usize = sc.scan();
     let m: usize = sc.scan();
@@ -39,7 +39,7 @@ fn main() {
     if let Ok(dist) = floyd_warshall(g) {
        for i in 0..n {
            for j in 0..n {
-               if dist[i][j] == inf { 
+               if dist[i][j] == inf {
                    write!(out, "INF").unwrap();
                } else {
                    write!(out, "{}", dist[i][j]).unwrap();
@@ -61,7 +61,7 @@ pub struct NegativeCycleError {
 impl NegativeCycleError {
     fn new() -> Self {
         Self { msg: "Negative Cycle Found." }
-    }  
+    }
 }
 
 impl std::fmt::Display for NegativeCycleError {
@@ -91,4 +91,3 @@ pub fn floyd_warshall(mut g: Vec<Vec<i64>>) -> Result<Vec<Vec<i64>>, NegativeCyc
     }
     Ok(g)
 }
-

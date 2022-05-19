@@ -23,7 +23,7 @@ fn main() {
     let stdin = std::io::stdin();
     let mut sc = Scanner::new(std::io::BufReader::new(stdin.lock()));
     let stdout = std::io::stdout();
-    let out = &mut std::io::BufWriter::new(stdout.lock());  
+    let out = &mut std::io::BufWriter::new(stdout.lock());
 
     // let inf = std::i64::MAX;
     let n: usize = sc.scan();
@@ -83,7 +83,7 @@ pub fn bit_length(n: usize) -> usize {
     let mut l = 0usize;
     while 1 << l <= n { l += 1; }
     l
-}  
+}
 
 
 pub struct UnionFind {
@@ -95,7 +95,7 @@ impl UnionFind {
     pub fn new(n: usize) -> Self {
         Self { data: vec![-1; n] }
     }
-    
+
     pub fn find(&mut self, u: usize) -> usize {
         if self.data[u] < 0 { return u; }
         self.data[u] = self.find(self.data[u] as usize) as i32;
@@ -118,21 +118,21 @@ impl UnionFind {
 
 
 /// Lowest Common Ancestor with Tarjan's offline algorithm.
-/// O(N + M) 
+/// O(N + M)
 pub fn tarjan_offline(g: &Vec<(usize, usize)>, uv: &Vec<(usize, usize)>, root: usize) -> Vec<usize> {
     fn dfs(
-        g: &Vec<Vec<usize>>, 
-        q: &Vec<Vec<(usize, usize)>>, 
-        visited: &mut Vec<bool>, 
-        uf: &mut UnionFind, 
-        ancestor: &mut Vec<usize>, 
+        g: &Vec<Vec<usize>>,
+        q: &Vec<Vec<(usize, usize)>>,
+        visited: &mut Vec<bool>,
+        uf: &mut UnionFind,
+        ancestor: &mut Vec<usize>,
         lca: &mut Vec<usize>,
         u: usize,
     ) {
         visited[u] = true;
         ancestor[u] = u;
         for &v in g[u].iter() {
-            if visited[v] { continue; }            
+            if visited[v] { continue; }
             dfs(g, q, visited, uf, ancestor, lca, v);
             uf.unite(u, v);
             ancestor[uf.find(u)] = u;
@@ -166,10 +166,10 @@ pub fn tarjan_offline(g: &Vec<(usize, usize)>, uv: &Vec<(usize, usize)>, root: u
 
 /// Lowest Common Ancestor with Binary Lifting.
 /// references
-/// - https://cp-algorithms.com/graph/lca_binary_lifting.html 
+/// - https://cp-algorithms.com/graph/lca_binary_lifting.html
 pub struct BinaryLifting {
     ancestor: Vec<Vec<usize>>,
-    depth: Vec<usize>,    
+    depth: Vec<usize>,
 }
 
 
@@ -183,7 +183,7 @@ impl BinaryLifting {
         ancestor[0] = parent;
         ancestor[0][root] = root;
         for i in 0..k - 1 {
-            for j in 0..n { 
+            for j in 0..n {
                 ancestor[i + 1][j] = ancestor[i][ancestor[i][j]];
             }
         }
@@ -217,5 +217,3 @@ pub struct Monoid<S> {
     pub e: Box<dyn Fn() -> S>,
     pub commutative: bool,
 }
-
-

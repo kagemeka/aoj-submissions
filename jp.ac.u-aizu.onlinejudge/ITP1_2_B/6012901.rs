@@ -15,6 +15,5 @@ fn main() {
     let b: i32 = scan();
     let c: i32 = scan();
     writeln!(out, "{}", if a < b && b < c { "Yes" } else { "No" }).unwrap();
-    
-}
 
+}

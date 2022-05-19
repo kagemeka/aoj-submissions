@@ -24,7 +24,7 @@ fn main() {
     let stdin = std::io::stdin();
     let mut sc = Scanner::new(std::io::BufReader::new(stdin.lock()));
     let stdout = std::io::stdout();
-    let out = &mut std::io::BufWriter::new(stdout.lock());  
+    let out = &mut std::io::BufWriter::new(stdout.lock());
 
     let inf = std::i64::MAX;
     let n: usize = sc.scan();
@@ -49,7 +49,7 @@ fn main() {
 /// with lowlink
 pub fn tarjan(g: &Vec<Vec<usize>>) -> Vec<usize> {
     fn dfs(
-        g: &Vec<Vec<usize>>, 
+        g: &Vec<Vec<usize>>,
         order: &mut Vec<usize>,
         low: &mut Vec<usize>,
         label: &mut Vec<usize>,
@@ -128,6 +128,5 @@ pub fn kosaraju(g: &Vec<Vec<usize>>) -> Vec<usize> {
         rev_dfs(&t, &mut label, l, *i);
         l += 1;
     }
-    label 
+    label
 }
-

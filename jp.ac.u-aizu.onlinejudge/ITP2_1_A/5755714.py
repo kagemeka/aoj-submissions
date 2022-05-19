@@ -1,4 +1,4 @@
-import typing 
+import typing
 
 
 def main() -> typing.NoReturn:
@@ -10,7 +10,7 @@ def main() -> typing.NoReturn:
     )
     if q[0] == 0:
       a.append(q[1])
-      continue  
+      continue
     if q[0] == 1:
       print(a[q[1]])
       continue

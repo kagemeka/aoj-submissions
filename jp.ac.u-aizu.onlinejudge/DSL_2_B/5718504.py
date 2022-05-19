@@ -18,13 +18,13 @@ class SegmentTree():
   ) -> typing.NoReturn:
     n = 1 << height
     a = [0] * (2 * n)
-    self.__n = n 
+    self.__n = n
     self.__a = a
-  
+
 
   def __len__(self) -> int:
     return self.__n
-  
+
 
   def __repr__(self) -> str:
     return str(self.__a)
@@ -49,7 +49,7 @@ def solve(
   def add(i, x):
     i += n
     while i:
-      seg[i] += x 
+      seg[i] += x
       i //= 2
 
 
@@ -66,19 +66,19 @@ def solve(
         s += seg[r]
       r //= 2
     return s
-        
+
 
   for com, x, y in q:
     if com == 0:
       add(x - 1, y)
     else:
       print(sum_(x - 1, y))
-      
+
 
 
 def main() -> typing.NoReturn:
   n, q = map(
-    int, 
+    int,
     input().split(),
   )
   q = [

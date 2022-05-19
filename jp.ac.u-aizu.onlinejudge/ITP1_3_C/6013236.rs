@@ -32,6 +32,3 @@ fn main() {
         writeln!(out, "{} {}", x, y).unwrap();
     }
 }
-
-
-

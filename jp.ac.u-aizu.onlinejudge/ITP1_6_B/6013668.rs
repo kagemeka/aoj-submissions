@@ -22,7 +22,7 @@ fn main() {
     let stdin = std::io::stdin();
     let mut sc = Scanner::new(std::io::BufReader::new(stdin.lock()));
     let stdout = std::io::stdout();
-    let out = &mut std::io::BufWriter::new(stdout.lock());  
+    let out = &mut std::io::BufWriter::new(stdout.lock());
 
 
     let n: usize = sc.scan();
@@ -40,6 +40,3 @@ fn main() {
         }
     }
 }
-
-
-

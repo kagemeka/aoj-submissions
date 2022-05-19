@@ -15,6 +15,5 @@
         let mut a = vec![0; n];
         for i in 0..n { a[i] = scan(); }
         a.sort();
-        writeln!(out, "{}", a.iter().map(|x| x.to_string()).collect::<Vec<_>>().join(" ")).unwrap();   
+        writeln!(out, "{}", a.iter().map(|x| x.to_string()).collect::<Vec<_>>().join(" ")).unwrap();
     }
-

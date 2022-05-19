@@ -24,7 +24,7 @@ fn main() {
     let stdin = std::io::stdin();
     let mut sc = Scanner::new(std::io::BufReader::new(stdin.lock()));
     let stdout = std::io::stdout();
-    let out = &mut std::io::BufWriter::new(stdout.lock());  
+    let out = &mut std::io::BufWriter::new(stdout.lock());
 
     let n: usize = sc.scan();
     let m: usize = sc.scan();
@@ -40,7 +40,7 @@ fn main() {
     if let Ok(dist) = johnson_dense(&g) {
        for i in 0..n {
            for j in 0..n {
-               if dist[i][j] == inf { 
+               if dist[i][j] == inf {
                    write!(out, "INF").unwrap();
                } else {
                    write!(out, "{}", dist[i][j]).unwrap();
@@ -72,8 +72,8 @@ pub fn johnson_dense(g: &Vec<Vec<i64>>) -> Result<Vec<Vec<i64>>, NegativeCycleEr
     let mut dist = Vec::with_capacity(n);
     for i in 0..n {
         let mut d = dijkstra_dense(&t, i);
-        for j in 0..n { 
-            if d[j] != inf { d[j] += h[j] - h[i]; } 
+        for j in 0..n {
+            if d[j] != inf { d[j] += h[j] - h[i]; }
         }
         dist.push(d);
     }
@@ -116,7 +116,7 @@ pub struct NegativeCycleError {
 impl NegativeCycleError {
     fn new() -> Self {
         Self { msg: "Negative Cycle Found." }
-    }  
+    }
 }
 
 impl std::fmt::Display for NegativeCycleError {

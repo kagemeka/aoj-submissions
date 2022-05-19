@@ -23,13 +23,13 @@ fn main() {
     let stdin = std::io::stdin();
     let mut sc = Scanner::new(std::io::BufReader::new(stdin.lock()));
     let stdout = std::io::stdout();
-    let out = &mut std::io::BufWriter::new(stdout.lock());  
+    let out = &mut std::io::BufWriter::new(stdout.lock());
 
 
     let n: usize = sc.scan();
     let m: usize = sc.scan();
     let mut g = vec![vec![]; n];
-    for _ in 0..m { 
+    for _ in 0..m {
         let u: usize = sc.scan();
         let v: usize = sc.scan();
         let cap: u64 = sc.scan();
@@ -46,9 +46,9 @@ pub fn dinic(g: &Vec<Vec<(usize, u64)>>, src: usize, sink: usize) -> u64 {
     let mut rf = vec![vec![0; n]; n];
     for u in 0..n {
         for &(v, f) in g[u].iter() { rf[u][v] += f; }
-    } 
+    }
     let mut g: Vec<Vec<usize>> = vec![vec![]; n];
-    for u in 0..n { 
+    for u in 0..n {
         for v in 0..n { if rf[u][v] > 0 { g[u].push(v); }; }
     }
     let update_level = |g: &Vec<Vec<usize>>| {
@@ -67,13 +67,13 @@ pub fn dinic(g: &Vec<Vec<(usize, u64)>>, src: usize, sink: usize) -> u64 {
     };
 
     fn flow_to_sink(
-        sink: usize, 
-        rf: &mut Vec<Vec<u64>>, 
-        g: &mut Vec<Vec<usize>>, 
-        level: &Vec<usize>, 
-        u: usize, 
+        sink: usize,
+        rf: &mut Vec<Vec<u64>>,
+        g: &mut Vec<Vec<usize>>,
+        level: &Vec<usize>,
+        u: usize,
         mut flow_in: u64,
-    ) -> u64 { 
+    ) -> u64 {
         if u == sink { return flow_in; }
         let mut flow_out = 0;
         let edges = g[u].clone();
@@ -88,16 +88,15 @@ pub fn dinic(g: &Vec<Vec<(usize, u64)>>, src: usize, sink: usize) -> u64 {
             flow_in -= f;
             flow_out += f;
         }
-        flow_out  
+        flow_out
     }
 
 
     let mut flow = 0;
-    loop { 
+    loop {
         let level = update_level(&g);
         if level[sink] == n { break; }
         flow += flow_to_sink(sink, &mut rf, &mut g, &level, src, std::u64::MAX);
     }
     flow
 }
-

@@ -37,8 +37,5 @@ fn main() {
         writeln!(out, "{}", "#".repeat(w)).unwrap();
         writeln!(out, "").unwrap();
     }
-        
+
 }
-
-
-

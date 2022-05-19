@@ -23,7 +23,7 @@ fn main() {
     let stdin = std::io::stdin();
     let mut sc = Scanner::new(std::io::BufReader::new(stdin.lock()));
     let stdout = std::io::stdout();
-    let out = &mut std::io::BufWriter::new(stdout.lock());  
+    let out = &mut std::io::BufWriter::new(stdout.lock());
 
     // let inf = std::i64::MAX;
     let n: usize = sc.scan();
@@ -74,12 +74,12 @@ pub fn bit_length(n: usize) -> usize {
     let mut l = 0usize;
     while 1 << l <= n { l += 1; }
     l
-}  
+}
 
 
 struct Doubling {
     ancestor: Vec<Vec<usize>>,
-    depth: Vec<usize>,    
+    depth: Vec<usize>,
 }
 
 
@@ -92,7 +92,7 @@ impl Doubling {
         ancestor[0] = parent;
         ancestor[0][root] = root;
         for i in 0..k - 1 {
-            for j in 0..n { 
+            for j in 0..n {
                 ancestor[i + 1][j] = ancestor[i][ancestor[i][j]];
             }
         }
@@ -124,5 +124,3 @@ pub struct Monoid<S> {
     pub e: Box<dyn Fn() -> S>,
     pub commutative: bool,
 }
-
-

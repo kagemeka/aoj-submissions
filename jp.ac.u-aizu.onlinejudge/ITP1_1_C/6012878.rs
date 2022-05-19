@@ -15,4 +15,3 @@ fn main() {
     let y: i32 = scan();
     writeln!(out, "{} {}", x * y, (x + y) * 2);
 }
-

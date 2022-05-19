@@ -23,7 +23,7 @@ fn main() {
     let stdin = std::io::stdin();
     let mut sc = Scanner::new(std::io::BufReader::new(stdin.lock()));
     let stdout = std::io::stdout();
-    let out = &mut std::io::BufWriter::new(stdout.lock());  
+    let out = &mut std::io::BufWriter::new(stdout.lock());
 
     let inf = std::i64::MAX;
     let n: usize = sc.scan();
@@ -37,7 +37,7 @@ fn main() {
     }
     let (path, diameter) = tree_diameter(&g);
     writeln!(out, "{}", diameter).unwrap();
-} 
+}
 
 
 
@@ -75,4 +75,3 @@ pub fn tree_diameter(g: &Vec<(usize, usize, i64)>) -> (Vec<usize>, i64) {
     }
     (path, diameter)
 }
-

@@ -23,7 +23,7 @@ fn main() {
     let stdin = std::io::stdin();
     let mut sc = Scanner::new(std::io::BufReader::new(stdin.lock()));
     let stdout = std::io::stdout();
-    let out = &mut std::io::BufWriter::new(stdout.lock());  
+    let out = &mut std::io::BufWriter::new(stdout.lock());
 
 
     let size_a: usize = sc.scan();
@@ -31,7 +31,7 @@ fn main() {
     let m: usize = sc.scan();
     let n = size_a + size_b;
     let mut g = vec![vec![]; n];
-    for _ in 0..m { 
+    for _ in 0..m {
         let u: usize = sc.scan();
         let v: usize = sc.scan();
         g[u].push(v + size_a);
@@ -73,7 +73,7 @@ pub fn ford_fulkerson(size_a: usize, size_b: usize, g: &[Vec<usize>]) -> usize {
 /// O(E\sqrt{V})
 /// references
 /// - https://en.wikipedia.org/wiki/Maximum_cardinality_matching
-/// - https://misteer.hatenablog.com/entry/hopcroft-karp 
+/// - https://misteer.hatenablog.com/entry/hopcroft-karp
 /// - https://tjkendev.github.io/procon-library/python/max_flow/hopcroft-karp.html
 pub fn hopcroft_karp() {
 

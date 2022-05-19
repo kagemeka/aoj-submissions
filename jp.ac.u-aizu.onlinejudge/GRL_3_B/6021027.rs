@@ -24,7 +24,7 @@ fn main() {
     let stdin = std::io::stdin();
     let mut sc = Scanner::new(std::io::BufReader::new(stdin.lock()));
     let stdout = std::io::stdout();
-    let out = &mut std::io::BufWriter::new(stdout.lock());  
+    let out = &mut std::io::BufWriter::new(stdout.lock());
 
     let inf = std::i64::MAX;
     let n: usize = sc.scan();
@@ -82,8 +82,8 @@ pub fn bridges(n: usize, g: &Vec<(usize, usize)>) -> Vec<(usize, usize)> {
         let mut v = *v;
         if order[u] > order[v] { std::mem::swap(&mut u, &mut v); }
         if low[v] <= order[u] { continue; }
-        if u > v { std::mem::swap(&mut u, &mut v); } 
-        bridges.push((u, v)); 
+        if u > v { std::mem::swap(&mut u, &mut v); }
+        bridges.push((u, v));
 
     }
     bridges.sort();
@@ -97,12 +97,12 @@ pub fn articulation_points(g: &Vec<Vec<usize>>) -> Vec<usize> {
     let (order, low) = lowlink(g);
     let mut visited = vec![false; n];
     fn dfs(
-        g: &Vec<Vec<usize>>, 
-        u: usize, 
-        parent: usize, 
+        g: &Vec<Vec<usize>>,
+        u: usize,
+        parent: usize,
         visited: &mut Vec<bool>,
-        order: &Vec<usize>, 
-        low: &Vec<usize>, 
+        order: &Vec<usize>,
+        low: &Vec<usize>,
         points: &mut Vec<usize>,
     ) {
         let n = g.len();
@@ -125,4 +125,4 @@ pub fn articulation_points(g: &Vec<Vec<usize>>) -> Vec<usize> {
     }
     articulation_points.sort();
     articulation_points
-} 
+}

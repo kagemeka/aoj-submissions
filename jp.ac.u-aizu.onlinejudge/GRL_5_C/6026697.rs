@@ -23,7 +23,7 @@ fn main() {
     let stdin = std::io::stdin();
     let mut sc = Scanner::new(std::io::BufReader::new(stdin.lock()));
     let stdout = std::io::stdout();
-    let out = &mut std::io::BufWriter::new(stdout.lock());  
+    let out = &mut std::io::BufWriter::new(stdout.lock());
 
     let inf = std::i64::MAX;
     let n: usize = sc.scan();
@@ -141,12 +141,12 @@ pub struct Semigroup<S> {
 }
 
 
-/// Sparse Table 
+/// Sparse Table
 /// references
 /// - https://cp-algorithms.com/data_structures/sparse-table.html
 pub struct SparseTable<S> {
     sg: Semigroup<S>,
-    data: Vec<Vec<S>>, 
+    data: Vec<Vec<S>>,
 }
 
 
@@ -164,8 +164,8 @@ impl<S: Default + Clone> SparseTable<S> {
             for j in 0..n - (1 << i) {
                 data[i + 1][j] = (sg.op)(&data[i][j], &data[i][j + (1 << i)])
             }
-        }   
-        Self { sg: sg, data: data }     
+        }
+        Self { sg: sg, data: data }
     }
 
     /// O(1)
@@ -180,13 +180,13 @@ impl<S: Default + Clone> SparseTable<S> {
 
 
 
-/// Disjoint Sparse Table 
+/// Disjoint Sparse Table
 /// references
 /// - https://noshi91.hatenablog.com/entry/2018/05/08/183946
 /// - https://github.com/noshi91/NoshiMochiLibrary/blob/master/SparseTable/DisjointSparseTable.noshi.cpp
 pub struct DisjointSparseTable<'a, S> {
     sg: &'a Semigroup<S>,
-    data: Vec<Vec<S>>, 
+    data: Vec<Vec<S>>,
 }
 
 
@@ -219,5 +219,3 @@ impl<'a, S: Default + Clone> DisjointSparseTable<'a, S> {
         (self.sg.op)(&self.data[k][l], &self.data[k][r - 1])
     }
 }
-
-

@@ -46,8 +46,8 @@ class SegTree(
     self,
     lr: typing.Tuple[int, int],
   ) -> int:
-    m = self.__m 
-    l, r = self.__l, self.__r 
+    m = self.__m
+    l, r = self.__l, self.__r
     i = self.__i
     ql, qr = lr
     if qr <= l or r <= ql:
@@ -74,7 +74,7 @@ class SegTree(
     n = (n - 1).bit_length()
     self.__n = n = 1 << n
     self.__a = [
-      monoid.e() 
+      monoid.e()
       for _ in range(n << 1)
     ]
     self.__l, self.__r = 0, n
@@ -99,8 +99,8 @@ class SegTree(
     while i:
       self.__update(i)
       i >>= 1
-  
-  
+
+
   def __update(
     self,
     i: int,
@@ -109,7 +109,7 @@ class SegTree(
     a[i] = self.__m.fn(
       a[i << 1],
       a[i << 1 | 1],
-    ) 
+    )
 
 
   @classmethod
@@ -122,7 +122,7 @@ class SegTree(
     seg = cls(monoid, n)
     for i in range(n):
       seg[i] = arr[i]
-    return seg  
+    return seg
 
 
 
@@ -151,11 +151,11 @@ class RMQ():
 
   def __fn(
     self,
-    x: int, 
+    x: int,
     y: int,
   ) -> int:
     return min(x, y)
-  
+
 
   def __identity(
     self,
@@ -191,12 +191,12 @@ def solve(
       rmq[x] = y
     else:
       print(rmq[x, y + 1])
-      
+
 
 
 def main() -> typing.NoReturn:
   n, q = map(
-    int, 
+    int,
     input().split(),
   )
   q = [

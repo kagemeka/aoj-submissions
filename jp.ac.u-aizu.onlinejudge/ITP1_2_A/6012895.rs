@@ -15,6 +15,5 @@ fn main() {
     let b: i32 = scan();
     let op: &str = if a < b { "<" } else if a > b { "==" } else { ">" };
     writeln!(out, "a {} b", op).unwrap();
-    
-}
 
+}

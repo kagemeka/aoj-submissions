@@ -28,8 +28,5 @@ fn main() {
     let mut a = vec![0; n];
     for i in 0..n { a[i] = sc.scan(); }
     writeln!(out, "{} {} {}", a.iter().min().unwrap(), a.iter().max().unwrap(), a.iter().sum::<i32>()).unwrap();
-        
+
 }
-
-
-

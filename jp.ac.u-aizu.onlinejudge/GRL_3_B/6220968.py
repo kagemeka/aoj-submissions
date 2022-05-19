@@ -1,4 +1,4 @@
-import typing 
+import typing
 import sys
 sys.setrecursionlimit(1 << 20)
 
@@ -29,7 +29,7 @@ def lowlink_undirected(
                 continue
             dfs(v, edge_id)
             lowlink[u] = min(lowlink[u], lowlink[v])
-    
+
     for i in range(n):
         if order[i] == -1:
             dfs(i, -1)
@@ -57,7 +57,7 @@ def main() -> None:
     edges = [tuple(map(int, input().split())) for _ in range(m)]
     edges.sort()
     bridge_ids = bridges_lowlink(n, edges)
-    
+
     for i in bridge_ids:
         u, v = edges[i]
         if u > v:

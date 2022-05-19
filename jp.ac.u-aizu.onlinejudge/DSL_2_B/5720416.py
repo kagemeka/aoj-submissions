@@ -1,49 +1,49 @@
 
-import typing 
+import typing
 
 
 
 class SegTree():
-  
+
   def  __init__(
     self,
     height: int,
   ) -> typing.NoReturn:
     n = 1 << height
     self.__a = [0] * (n << 1)
-    self.__n = n 
-  
+    self.__n = n
+
 
   def __len__(self) -> int:
     return self.__n
-  
+
 
   def __getitem__(
     self,
     i: int,
   ) -> int:
     return self.__a[i]
-  
+
 
   def __setitem__(
     self,
     i: int,
     x: int,
   ) -> typing.NoReturn:
-    self.__a[i] = x 
+    self.__a[i] = x
 
 
 
 class RSQ():
-  
+
   def __init__(
     self,
     height: int,
   ) -> typing.NoReturn:
     seg = SegTree(height)
     self.__seg = seg
-    
-  
+
+
   def add(
     self,
     i: int,
@@ -68,7 +68,7 @@ class RSQ():
     i: int,
   ) -> int:
     if r <= sl or sr <= l:
-      return 0 
+      return 0
     if l <= sl and sr <= r:
       return self.__seg[i]
     sc = (sl + sr) // 2
@@ -80,8 +80,8 @@ class RSQ():
     )
     return lsum + rsum
 
-  
-    
+
+
 
 
 
@@ -98,7 +98,7 @@ def solve(
     else:
       print(rsq.sum(
         x - 1, y, 0, 1 << h, 1,
-      )) 
+      ))
 
 
 
@@ -116,4 +116,3 @@ def main() -> typing.NoReturn:
 
 
 main()
-

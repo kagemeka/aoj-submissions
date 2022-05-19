@@ -24,7 +24,7 @@ fn main() {
     let stdin = std::io::stdin();
     let mut sc = Scanner::new(std::io::BufReader::new(stdin.lock()));
     let stdout = std::io::stdout();
-    let out = &mut std::io::BufWriter::new(stdout.lock());  
+    let out = &mut std::io::BufWriter::new(stdout.lock());
 
     let n: usize = sc.scan();
     let m: usize = sc.scan();
@@ -50,7 +50,7 @@ pub fn kruskal(n: usize, mut g: Vec<(usize, usize, i64)>) -> Vec<(usize, usize, 
     for (u, v, w) in g.into_iter() {
         if uf.find(u) == uf.find(v) { continue; }
         uf.unite(u, v);
-        mst.push((u, v, w));        
+        mst.push((u, v, w));
     }
     mst
 }
@@ -64,7 +64,7 @@ impl UnionFind {
     pub fn new(n: usize) -> Self {
         Self { data: vec![-1; n] }
     }
-    
+
     pub fn find(&mut self, u: usize) -> usize {
         if self.data[u] < 0 { return u; }
         self.data[u] = self.find(self.data[u] as usize) as i32;

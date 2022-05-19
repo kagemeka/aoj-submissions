@@ -27,6 +27,3 @@ fn main() {
     let r: i32 = sc.scan();
     writeln!(out, "{:.16} {:.16}", (r * r) as f64 * std::f64::consts::PI, (2 * r) as f64 * std::f64::consts::PI);
 }
-
-
-

@@ -23,14 +23,14 @@ fn main() {
     let stdin = std::io::stdin();
     let mut sc = Scanner::new(std::io::BufReader::new(stdin.lock()));
     let stdout = std::io::stdout();
-    let out = &mut std::io::BufWriter::new(stdout.lock());  
+    let out = &mut std::io::BufWriter::new(stdout.lock());
 
     let mut m: usize = sc.scan();
     let mut n: usize = sc.scan();
     const MOD: usize = 1_000_000_007;
-    
+
     let mut x = 1usize;
-    while n > 0 { 
+    while n > 0 {
         if n & 1 == 1 { x = x * m % MOD; }
         m = m * m % MOD;
         n >>= 1;
@@ -38,4 +38,3 @@ fn main() {
     writeln!(out, "{}", x).unwrap();
 
 }
-
