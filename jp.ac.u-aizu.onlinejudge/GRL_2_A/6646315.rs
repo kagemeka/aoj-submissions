@@ -179,4 +179,3 @@ impl UnionFind {
         labels
     }
 }
-

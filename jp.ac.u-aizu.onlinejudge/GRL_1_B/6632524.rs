@@ -290,4 +290,3 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     writer.flush()?;
     Ok(())
 }
-
