@@ -229,4 +229,3 @@ impl<'a> SCCTarjanLowLink<'a> {
         labels.into_iter().map(|l| k - l).collect::<Vec<_>>()
     }
 }
-

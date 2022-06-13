@@ -155,4 +155,3 @@ pub fn undirected_lowlink(
 
     LowlinkResult { orders, low_orders }
 }
-

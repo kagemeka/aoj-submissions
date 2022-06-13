@@ -240,4 +240,3 @@ impl UnionFind {
         labels
     }
 }
-

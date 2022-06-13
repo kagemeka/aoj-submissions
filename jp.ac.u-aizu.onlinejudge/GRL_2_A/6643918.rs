@@ -112,4 +112,3 @@ impl UnionFind {
         self.find_root(u) == self.find_root(v)
     }
 }
-

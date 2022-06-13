@@ -44,11 +44,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     if a == 0 && b == 0 {
         writeln!(writer, "1")?;
         return Ok(());
-    }   
+    }
     let ans = (a ^ b).leading_zeros() - std::cmp::max(a, b).leading_zeros();
     writeln!(writer, "{}", ans)?;
 
     writer.flush()?;
     Ok(())
 }
-

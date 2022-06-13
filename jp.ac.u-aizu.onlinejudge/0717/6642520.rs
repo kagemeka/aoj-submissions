@@ -44,8 +44,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let res = if s.matches('R').count() == k { 'W' } else { 'R' };
     writeln!(writer, "{}", res)?;
-    
+
     writer.flush()?;
     Ok(())
 }
-
